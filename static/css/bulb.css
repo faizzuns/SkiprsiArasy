@@ -1,0 +1,66 @@
+
+.donation-meter {
+    margin-left: 30px;
+    width: 100px;
+}
+.donation-meter .glass {
+    background: #e5e5e5;
+    border-radius: 100px 100px 0 0;
+    display: block;
+    height: 250px;
+    margin: 0 35px 10px;
+    padding: 5px;
+    position: relative;
+    width: 20px;
+}
+.donation-meter .amount {
+    background: #f34e54;
+    border-radius: 100px;
+    display: block;
+    width: 10px;
+    position: absolute;
+    bottom: 5px;
+}
+.donation-meter strong {
+    display: block;
+    text-align: center;
+}
+.donation-meter .goal {
+    font-size: 30px;
+}
+.donation-meter .total {
+    font-size: 16px;
+    position: absolute;
+    right: 35px;
+}
+
+.bulb {
+    background: #e5e5e5;
+    border-radius: 100px;
+    display: block;
+    height: 50px;
+    margin: 0 35px 10px;
+    padding: 5px;
+    position: relative;
+    top: -20px;
+    right: 15px;
+    width: 50px;
+}
+.bulb .red-circle {
+    background: #f34e54;
+    border-radius: 100px;
+    display: block;
+    height: 40px;
+    width: 40px;
+}
+.bulb .filler {
+    background: #f34e54;
+    border-radius: 100px 100px 0 0;
+    display: block;
+    height: 30px;
+    width: 10px;
+    position: relative;
+    top: -65px;
+    right: -15px;
+    z-index: 30;
+}

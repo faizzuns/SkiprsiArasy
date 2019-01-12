@@ -78,7 +78,7 @@ class FormController extends BaseController
         if ($state == -1) return;
         else if ($state == 0) $this->firstTendency();
         else if ($state == 1) $this->news($ssn->getUserId());
-        else if ($state == 2) $this->firstMeasure($ssn->getUserId());
+        else if ($state == 2) $this->firstMeasure();
         else if ($state == 3) $this->distract($ssn->getUserId());
         else if ($state == 4) $this->correction($ssn->getUserId());
         else if ($state == 5) $this->secondMeasure($ssn->getUserId());
@@ -110,11 +110,9 @@ class FormController extends BaseController
         View::render("news", ["content" => $this->getContent($fill->getIdNews())]);
     }
 
-    public function firstMeasure($userId)
+    public function firstMeasure()
     {
-        if (!$this->direct) {
-
-        }
+        View::render("thermometer", ["state" => 3]);
     }
 
     public function distract($userId)
@@ -122,6 +120,7 @@ class FormController extends BaseController
         if (!$this->direct) {
 
         }
+        View::render("distract", []);
     }
 
     public function correction($userId)
@@ -228,9 +227,8 @@ class FormController extends BaseController
             Presiden Jokowi melakukan revisi Peraturan Pemerintah (PP) tentang penyaluran dana desa. Jokowi 
             menandatangani PP baru tentang penyaluran dana desa pada 27 Agustus 2018. Salah satu poin dalam 
             revisi PP Dana Desa tersebut adalah Presiden Jokowi menyetujui pengalokasian dana desa sebesar 25% 
-            kepada dana infrastruktur nasional. Pengalokasian dana ini dilakukan oleh pemerintah karena 
-            peruntukan infrastruktur yang dibangun oleh era Jokowi juga terkait dengan pembangunan desa agar 
-            tidak terjadi disparitas dengan perkotaan. Namun, banyak pihak yang menyayangkan kebijakan ini 
+            kepada dana infrastruktur nasional. Pengalokasi dana ini dilakukan pemerintah terkait dengan tujuan pembangunan infrastruktur era jokowi dalam mengurangi disparitas pembangunan desa dengan perkotaan.
+             Namun, banyak pihak yang menyayangkan kebijakan ini 
             karena pembangunan infrastruktur yang sangat masif dianggap terlalu dipaksakan oleh pemerintah. 
             Bahkan, menurut Ketua Komisi V DPR Fary Djemy Francis pembangunan infrastruktur justru hanya 
             menjadi ajang pencitraan bagi Presiden Joko Widodo untuk menghadapi kontestasi politik pada 
