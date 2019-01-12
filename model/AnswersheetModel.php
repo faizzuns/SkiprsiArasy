@@ -13,6 +13,9 @@ class AnswersheetModel extends BaseModel
     protected $user_id;
     protected $tendency_1;
     protected $tendecy_2;
+//    0 = netral
+//    1 = positif
+//    2 = negatif
     protected $id_news;
     protected $distract;
     protected $correction;
@@ -241,9 +244,19 @@ class AnswersheetModel extends BaseModel
     public function generateIdNews()
     {
         $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
-                                        . "id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
+                                        . "AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
         $stmt->bindParam("first_pick", $this->first_pick);
-
+        $idnews = 0;
+        $check = [0, 0, 0];
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $idnews = $row['id_news'];
+            $check[$idnews] = 1;
+        }
+        if ($check[0] == 0) $this->id_news = 0;
+        else if ($check[1] == 0) $this->id_news = 1;
+        else if ($check[2] == 0) $this->id_news = 2;
+        else $this->id_news = $idnews;
     }
 
 
