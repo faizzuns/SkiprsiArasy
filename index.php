@@ -20,8 +20,9 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 $router = new Router();
 
 $router->get("/", "Home@view");
-$router->get("/forms", "Form@start");
+$router->post("/register", "Form@register");
 $router->get("/regency", "Regencies@getRegency");
+$router->get("/forms", "Form@start");
 
 
 $router->execute();

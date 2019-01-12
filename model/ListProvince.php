@@ -6,7 +6,7 @@
  * Time: 3:49 PM
  */
 
-require "model/BaseModel.php";
+require_once "model/BaseModel.php";
 
 class ListProvince extends BaseModel
 {

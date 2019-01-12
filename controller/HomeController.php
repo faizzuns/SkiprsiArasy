@@ -6,6 +6,7 @@
  * Time: 11:28 AM
  */
 require "BaseController.php";
+require_once "core/Session.php";
 require "core/View.php";
 
 class HomeController extends BaseController
@@ -17,7 +18,12 @@ class HomeController extends BaseController
 
     public function view()
     {
-        $vars = [];
-        View::render("home", $vars);
+        $session = new Session();
+        if ($session->inSession()) {
+            View::redirect("/forms");
+        } else {
+            $vars = [];
+            View::render("home", $vars);
+        }
     }
 }

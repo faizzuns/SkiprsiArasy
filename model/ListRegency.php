@@ -6,7 +6,7 @@
  * Time: 4:51 PM
  */
 
-require "model/BaseModel.php";
+require_once "model/BaseModel.php";
 
 class ListRegency extends BaseModel
 {
