@@ -8,6 +8,7 @@
 
 require "BaseController.php";
 require "core/View.php";
+require "model/ListProvince.php";
 
 class FormController extends BaseController
 {
@@ -18,10 +19,12 @@ class FormController extends BaseController
 
     public function start()
     {
+        $provincies = new ListProvince();
+        $provincies->loadProvincies();
 
-
-
-        $vars = [];
+        $vars = [
+            "provinces" =>$provincies->getList()
+        ];
         View::render("identity", $vars);
     }
 

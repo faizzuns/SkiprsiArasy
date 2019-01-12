@@ -61,10 +61,18 @@
             <div class="margin-large">
                 <select name="province" class="form-control" required onchange="select_city(value)">
                     <option disabled value="" selected hidden>Provinsi</option>
+                    <?php
+                        $idx = 0;
+                        foreach ($provinces as $val) {
+                            $nm = $val["name"];
+                            echo "<option id=$idx value='$nm'>$nm</option>";
+                            $idx = $idx + 1;
+                        }
+                    ?>
                 </select>
             </div>
             <div class="margin-large">
-                <select id="district" name="district" class="form-control" required onchange="select_sub_district(value)">
+                <select id="district" name="district" class="form-control">
                     <option disabled value="" selected hidden>Kota / Kabupaten</option>
                 </select>
             </div>
@@ -83,4 +91,20 @@
 </div>
 <div style="height: 40px;"></div>
 </body>
+
+<script>
+    function select_city(name) {
+        fetch("/regency?province_name=" + name)
+            .then((resp) => resp.json())
+            .then( function(data) {
+                let element = document.getElementById("district");
+                for (let dt of data) {
+                    element.innerHTML += '<option value = "' + dt['name'] + '">' + dt['name'] + '</option>';
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+</script>
 </html>
