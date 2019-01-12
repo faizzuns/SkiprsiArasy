@@ -14,7 +14,7 @@
 <div class="container">
     <div class="box-home padding-medium">
         <div class="flex center-horizontal text-size-very-small margin-top-medium" style="text-align: justify;"></div>
-        <form action="/" style="margin-top:-15px">
+        <form method="post" action="/register" style="margin-top:-15px">
             <input type="hidden" value="1" name="status">
             <div class="margin-large">
                 <div class="form-group" style="font-size:18px; padding-top: -2px;">
@@ -61,15 +61,23 @@
             <div class="margin-large">
                 <select name="province" class="form-control" required onchange="select_city(value)">
                     <option disabled value="" selected hidden>Provinsi</option>
+                    <?php
+                        $idx = 0;
+                        foreach ($provinces as $val) {
+                            $nm = $val["name"];
+                            echo "<option id=$idx value='$nm'>$nm</option>";
+                            $idx = $idx + 1;
+                        }
+                    ?>
                 </select>
             </div>
             <div class="margin-large">
-                <select id="district" name="district" class="form-control" required onchange="select_sub_district(value)">
+                <select id="district" name="district" class="form-control">
                     <option disabled value="" selected hidden>Kota / Kabupaten</option>
                 </select>
             </div>
             <div class="margin-large">
-                <select id="location" name="location" class="form-control" required>
+                <select id="village" name="village" class="form-control" required>
                     <option disabled value="" selected hidden>Wilayah Tempat Tinggal</option>
                     <option value="Kelurahan">Kelurahan</option>
                     <option value="Desa">Desa</option>
@@ -83,4 +91,22 @@
 </div>
 <div style="height: 40px;"></div>
 </body>
+
+<script>
+    function select_city(name) {
+        fetch("/regency?province_name=" + name)
+            .then((resp) => resp.json())
+            .then( function(data) {
+                let element = document.getElementById("district");
+                element.innerHTML = '<option disabled value="" selected hidden>Kota / Kabupaten</option>';
+
+                for (let dt of data) {
+                    element.innerHTML += '<option value = "' + dt['name'] + '">' + dt['name'] + '</option>';
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+</script>
 </html>

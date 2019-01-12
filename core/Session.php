@@ -29,7 +29,7 @@ class Session
         return $sessionId;
     }
 
-    public function setSession($userId, $username) {
+    public function setSession($userId) {
         if ($this->inSession()) {
             return;
         }
@@ -37,12 +37,9 @@ class Session
         $this->session->setSessionId($sessionId);
         $this->session->setUserId($userId);
         $this->session->setExpire(date('Y-m-d H:i:s', strtotime("+1 days")));
-        $this->session->setIp($_SERVER['REMOTE_ADDR']);
-        $this->session->setAgent($_SERVER['HTTP_USER_AGENT']);
         $this->session->insert();
 
         setcookie("session", $sessionId);
-        setcookie("username", $username);
     }
 
     public function inSession() {
@@ -61,14 +58,6 @@ class Session
 
         if ($this->session->getExpire() < date('Y-m-d H:i:s')) {
             $this->session->delete();
-            return False;
-        }
-
-        if ($this->session->getAgent() != $_SERVER['HTTP_USER_AGENT']) {
-            return False;
-        }
-
-        if ($this->session->getIp() != $_SERVER['REMOTE_ADDR']) {
             return False;
         }
 
