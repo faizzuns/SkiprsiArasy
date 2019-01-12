@@ -11,9 +11,13 @@ require "core/View.php";
 require "model/ListProvince.php";
 require_once "core/Session.php";
 require "model/UserModel.php";
+require "model/AnswersheetModel.php";
+require "model/SessionModel.php";
 
 class FormController extends BaseController
 {
+    protected $direct = false;
+
     public function __construct($request)
     {
         parent::__construct($request);
@@ -23,7 +27,8 @@ class FormController extends BaseController
     {
         $session = new Session();
         if ($session->inSession()) {
-            echo "MANTAP";
+            $this->direct = true;
+            $this->continueForm();
         } else {
             $provincies = new ListProvince();
             $provincies->loadProvincies();
@@ -63,7 +68,77 @@ class FormController extends BaseController
     }
 
     public function continueForm() {
-        echo "HALO";
+        $ssn = new SessionModel();
+        $ssn->setSessionId($_COOKIE["session"]);
+        $ssn->load();
+
+        $fill = new AnswersheetModel();
+        $fill->setUserId($ssn->getUserId());
+        $fill->loadFromUserId();
+
+        if ($this->direct) $state = $fill->getState();
+        else $state = (int) $this->request->post("state");
+
+        if ($state == -1) return;
+        else if ($state == 0) $this->firstTendency($fill);
+        else if ($state == 1) $this->news($fill);
+        else if ($state == 2) $this->firstMeasure($fill);
+        else if ($state == 3) $this->distract($fill);
+        else if ($state == 4) $this->correction($fill);
+        else if ($state == 5) $this->secondMeasure($fill);
+        else if ($state == 6) $this->secondTendency($fill);
+        else if ($state == 7) $this->dbrief($fill);
+
     }
+
+    public function firstTendency($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function news($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function firstMeasure($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function distract($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function correction($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function secondMeasure($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function secondTendency($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+    public function dbrief($fill) {
+        if (!$this->direct) {
+
+        }
+    }
+
+
 
 }

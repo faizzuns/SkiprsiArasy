@@ -30,9 +30,12 @@ $stmt = $conn->prepare("CREATE TABLE answersheet (
                                   tendency_1 INT,
                                   tendecy_2 INT,
                                   id_news INT,
-                                  termo INT,
+                                  termo_1 INT,
+                                  termo_2 INT,
                                   dbrief_1 INT,
-                                  dbrief_2 INT
+                                  dbrief_2 INT,
+                                  distract INT,
+                                  correction INT
                                   )");
 $stmt->execute();
 
