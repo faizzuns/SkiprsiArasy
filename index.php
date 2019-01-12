@@ -23,12 +23,7 @@ $router->get("/", "Home@view");
 $router->post("/register", "Form@register");
 $router->get("/regency", "Regencies@getRegency");
 $router->get("/forms", "Form@start");
-<<<<<<< HEAD
 $router->get("/distract","Distract@view");
 $router->post("/abis","Distract@abis");
-
-=======
 $router->post("/forms", "Form@continueForms");
->>>>>>> 58d59474b23574d303052fa7c3aebc2f96795174
-
 $router->execute();
