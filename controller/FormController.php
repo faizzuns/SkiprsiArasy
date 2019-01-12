@@ -12,7 +12,6 @@ require "model/ListProvince.php";
 require_once "core/Session.php";
 require "model/UserModel.php";
 require "model/AnswersheetModel.php";
-require "model/SessionModel.php";
 
 class FormController extends BaseController
 {
@@ -58,13 +57,16 @@ class FormController extends BaseController
         $user->setProvince($this->request->post("province"));
         $user->setRegency($this->request->post("district"));
         $user->setVillage($this->request->post("village"));
-
         $user->insert();
+
+        $answersheet = new AnswersheetModel();
+        $answersheet->setUserId($user->getId());
+        $answersheet->insert();
 
         $session = new Session();
         $session->setSession($user->getId());
 
-        View::redirect("/forms/fill");
+        View::redirect("/forms");
     }
 
     public function continueForm() {
@@ -80,60 +82,70 @@ class FormController extends BaseController
         else $state = (int) $this->request->post("state");
 
         if ($state == -1) return;
-        else if ($state == 0) $this->firstTendency($fill);
-        else if ($state == 1) $this->news($fill);
-        else if ($state == 2) $this->firstMeasure($fill);
-        else if ($state == 3) $this->distract($fill);
-        else if ($state == 4) $this->correction($fill);
-        else if ($state == 5) $this->secondMeasure($fill);
-        else if ($state == 6) $this->secondTendency($fill);
-        else if ($state == 7) $this->dbrief($fill);
+        else if ($state == 0) $this->firstTendency();
+        else if ($state == 1) $this->news($ssn->getUserId());
+        else if ($state == 2) $this->firstMeasure($ssn->getUserId());
+        else if ($state == 3) $this->distract($ssn->getUserId());
+        else if ($state == 4) $this->correction($ssn->getUserId());
+        else if ($state == 5) $this->secondMeasure($ssn->getUserId());
+        else if ($state == 6) $this->secondTendency($ssn->getUserId());
+        else if ($state == 7) $this->dbrief($ssn->getUserId());
 
     }
 
-    public function firstTendency($fill) {
+    public function firstTendency() {
+        View::render("tendency", ["state" => 1]);
+    }
+
+    public function news($userId) {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
+        if (!$this->direct) {
+            $score = $this->request->post("tendency");
+            if ($score == 5) $pick = "Netral";
+            else if ($score > 5) $pick = "Prabowo";
+            else $pick = "Jokowi";
+            $fill->setTendency1($score);
+            $fill->setFirstPick($pick);
+            $fill->generateIdNews();
+            $fill->save();
+        }
+        $vars = [];
+        View::render("news", $vars);
+    }
+
+    public function firstMeasure($userId) {
         if (!$this->direct) {
 
         }
     }
 
-    public function news($fill) {
+    public function distract($userId) {
         if (!$this->direct) {
 
         }
     }
 
-    public function firstMeasure($fill) {
+    public function correction($userId) {
         if (!$this->direct) {
 
         }
     }
 
-    public function distract($fill) {
+    public function secondMeasure($userId) {
         if (!$this->direct) {
 
         }
     }
 
-    public function correction($fill) {
+    public function secondTendency($userId) {
         if (!$this->direct) {
 
         }
     }
 
-    public function secondMeasure($fill) {
-        if (!$this->direct) {
-
-        }
-    }
-
-    public function secondTendency($fill) {
-        if (!$this->direct) {
-
-        }
-    }
-
-    public function dbrief($fill) {
+    public function dbrief($userId) {
         if (!$this->direct) {
 
         }

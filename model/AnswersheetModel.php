@@ -12,7 +12,7 @@ class AnswersheetModel extends BaseModel
 {
     protected $user_id;
     protected $tendency_1;
-    protected $tendency_2;
+    protected $tendecy_2;
     protected $id_news;
     protected $distract;
     protected $correction;
@@ -20,6 +20,7 @@ class AnswersheetModel extends BaseModel
     protected $termo_2;
     protected $dbrief_1;
     protected $dbrief_2;
+    protected $first_pick;
 
     /**
      * AnswersheetModel constructor.
@@ -50,7 +51,7 @@ class AnswersheetModel extends BaseModel
         else if ($this->distract == NULL) return 3;
         else if ($this->correction == NULL) return 4;
         else if ($this->termo_2 == NULL) return 5;
-        else if ($this->tendency_2 == NULL) return 6;
+        else if ($this->tendecy_2 == NULL) return 6;
         else if ($this->dbrief_1 == NULL) return 7;
         else return -1;
     }
@@ -87,21 +88,7 @@ class AnswersheetModel extends BaseModel
         $this->tendency_1 = $tendency_1;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTendency2()
-    {
-        return $this->tendency_2;
-    }
 
-    /**
-     * @param mixed $tendency_2
-     */
-    public function setTendency2($tendency_2)
-    {
-        $this->tendency_2 = $tendency_2;
-    }
 
     /**
      * @return mixed
@@ -184,6 +171,82 @@ class AnswersheetModel extends BaseModel
     {
         $this->dbrief_2 = $dbrief_2;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTendecy2()
+    {
+        return $this->tendecy_2;
+    }
+
+    /**
+     * @param mixed $tendecy_2
+     */
+    public function setTendecy2($tendecy_2)
+    {
+        $this->tendecy_2 = $tendecy_2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDistract()
+    {
+        return $this->distract;
+    }
+
+    /**
+     * @param mixed $distract
+     */
+    public function setDistract($distract)
+    {
+        $this->distract = $distract;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCorrection()
+    {
+        return $this->correction;
+    }
+
+    /**
+     * @param mixed $correction
+     */
+    public function setCorrection($correction)
+    {
+        $this->correction = $correction;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstPick()
+    {
+        return $this->first_pick;
+    }
+
+    /**
+     * @param mixed $first_pick
+     */
+    public function setFirstPick($first_pick)
+    {
+        $this->first_pick = $first_pick;
+    }
+
+
+
+    public function generateIdNews()
+    {
+        $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
+                                        . "id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
+        $stmt->bindParam("first_pick", $this->first_pick);
+
+    }
+
+
 
 
 }

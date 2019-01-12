@@ -114,3 +114,13 @@ footer {
 .align-right {justify-content: flex-end;}
 .align-bottom {align-items: flex-end;}
 .row {flex-direction: row;}
+
+
+.candidate-img {
+    border-radius: 100%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #37474F;
+    height: 100px;
+    width: 100px;
+}

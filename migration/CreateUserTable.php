@@ -35,8 +35,8 @@ $stmt = $conn->prepare("CREATE TABLE answersheet (
                                   dbrief_1 INT,
                                   dbrief_2 INT,
                                   distract INT,
-                                  correction INT
-                                  )");
+                                  correction INT,
+                                  first_pick VARCHAR(15))");
 $stmt->execute();
 
 $stmt = $conn->prepare("CREATE TABLE question

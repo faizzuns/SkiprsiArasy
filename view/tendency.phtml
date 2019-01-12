@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Gathering</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body class="bg">
+<div style="height: 70px;"></div>
+<div class="container">
+    <div class="box-home padding-medium">
+        <div class="margin-large" style="text-align: justify">
+            Anda diminta untuk menentukan posisi Anda apakah mendukung Jokowi atau mendukung Prabowo dari rentang skala 0-5 dibawah ini. Tunjukkan posisi Anda dengan cara menggeser lingkaran hitam dibawah ini sesuai dengan derajat yang telah ditentukan!
+        </div>
+        <div class="margin-large center-horizontal" style="text-align: justify">
+            <strong>Keterangan :<br>
+            0 = Tidak Mendukung<br>
+            4 = Sangat Mendukung<br>
+                5 = Netral</strong>
+        </div>
+        <form method="post" class="margin-bot-medium" action="/forms">
+            <div class="margin-left-very-large margin-right-very-large margin-bot-medium">
+                <div class="flex center-horizontal">
+                    <input name="tendency" type="range" class="custom-range" min="0" max="10" id="customRange3" oninput="changeDetail(customRange3.value)">
+                </div>
+                <div class="center-horizontal flex">
+                    <div class="flex space-beetween full-width margin-top-small">
+                        <div class="flex text-size-small" style="width: 5%">0</div>
+                        <div class="flex center-horizontal text-size-small" style="width: 5%">5</div>
+                        <div class="flex align-right text-size-small" style="width: 5%">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-beetween margin-top-small">
+                <div>
+                    <div class="flex center-horizontal">
+                        <img src="static/jokowi.jpg" class="candidate-img"/>
+                    </div>
+                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong>Jokowi</strong></div>
+                </div>
+                <div class="flex center-vertical">
+                    <div>
+                        <div class="flex center-horizontal" style="font-size: 50px;" id="value">5</div>
+                        <div class="flex center-horizontal" id="name">Netral</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex center-horizontal">
+                        <img src="static/prabowo.jpg" class="candidate-img"/>
+                    </div>
+                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong>Prabowo</strong></div>
+                </div>
+            </div>
+            <input type="hidden" name="state" value=<?php echo $state;?>>
+            <div class="flex center-horizontal margin-top-medium">
+                <input type="submit" value="Next" class="btn btn-outline-dark quarter margin-top-medium">
+            </div>
+        </form>
+    </div>
+</div>
+<div style="height: 40px;"></div>
+</body>
+
+<script>
+    function changeDetail(val) {
+        let number = document.getElementById('value');
+        let name = document.getElementById('name');
+        let comment = 'Netral';
+        let x = 5;
+        if (val < 5) {
+            comment = 'Jokowi';
+            x = val;
+        } else if (val > 5) {
+            comment = 'Prabowo';
+            x = 5 - (val - 5);
+        }
+
+        name.innerHTML = comment;
+        number.innerHTML = x;
+
+    }
+</script>
+</html>
