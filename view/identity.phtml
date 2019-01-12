@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Gathering</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body class="bg">
+<div style="height: 70px;"></div>
+<div class="container">
+    <div class="box-home padding-medium">
+        <div class="flex center-horizontal text-size-very-small margin-top-medium" style="text-align: justify;"></div>
+        <form action="/" style="margin-top:-15px">
+            <input type="hidden" value="1" name="status">
+            <div class="margin-large">
+                <div class="form-group" style="font-size:18px; padding-top: -2px;">
+                    <input require="" name="name" type="text" class="form-control" id="nama" placeholder="Nama / Inisial" required></div>
+            </div>
+            <div class="margin-large">
+                <div class="form-group" style="font-size:18px">
+                    <input type="number" name="age" require="" class="form-control"  placeholder="Usia" aria-describedby="usiaHelp" id="usia" required >
+                    <small id="usiaHelp" class="form-text text-muted">Usia harus berupa angka</small>
+                </div>
+            </div>
+            <div class="margin-large">
+                <div class="form-group" style="font-size:18px">
+                    <input require="" type="text" name="phone" class="form-control" id="domisili" placeholder="Nomor Telepon">
+                    <small id="telpHelp" class="form-text text-muted">(Opsional  jika anda tertarik mengikuti undian gopay)</small>
+                </div>
+            </div>
+            <div class="margin-large">
+                <select name="profession" class="form-control" required>
+                    <option disabled value="" selected hidden>Profesi</option>
+                    <option value="Pelajar">Pelajar</option>
+                    <option value="Mahasiswa">Mahasiswa</option>
+                    <option value="PNS">PNS</option>
+                    <option value="Pegawai Swasta">Pegawai Swasta</option>
+                    <option value="Wirausaha">Wirausaha</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="margin-large">
+                <select name="education" class="form-control" required>
+                    <option disabled value="" selected hidden>Pendidikan Terakhir</option>
+                    <option value="SD">SD/Sederajat</option>
+                    <option value="SMP">SMP/Sederajat</option>
+                    <option value="SMA">SMA/Sederajat</option>
+                    <option value="D1">D1</option>
+                    <option value="D2">D2</option>
+                    <option value="D3">D3</option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                </select>
+                <small id="pendidikanHelp" class="form-text text-muted">Pendidikan Terakhir yang sudah ditamatkan</small>
+            </div>
+            <div class="margin-large">
+                <select name="province" class="form-control" required onchange="select_city(value)">
+                    <option disabled value="" selected hidden>Provinsi</option>
+                </select>
+            </div>
+            <div class="margin-large">
+                <select id="district" name="district" class="form-control" required onchange="select_sub_district(value)">
+                    <option disabled value="" selected hidden>Kota / Kabupaten</option>
+                </select>
+            </div>
+            <div class="margin-large">
+                <select id="location" name="location" class="form-control" required>
+                    <option disabled value="" selected hidden>Wilayah Tempat Tinggal</option>
+                    <option value="Kelurahan">Kelurahan</option>
+                    <option value="Desa">Desa</option>
+                </select>
+            </div>
+            <div class ="text-center">
+                <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third">
+            </div>
+        </form>
+    </div>
+</div>
+<div style="height: 40px;"></div>
+</body>
+</html>
