@@ -21,6 +21,8 @@ $router = new Router();
 
 $router->get("/", "Home@view");
 $router->get("/forms", "Form@start");
+$router->get("/distract","Distract@view");
+$router->post("/abis","Distract@abis");
 
 
 $router->execute();
