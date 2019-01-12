@@ -1,0 +1,178 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Data Gathering</title>-->
+<!--    <link rel="stylesheet" href="static/css/app.css">-->
+<!--    <link href="style.css" rel="stylesheet" type="text/css" />-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
+<!--</head>-->
+<!---->
+<!---->
+<!--<body class="bg">-->
+<!--<div style="height: 70px;"></div>-->
+<!--<div class="container">-->
+<!--    <div class="box-home padding-medium">-->
+<!--        <div class="flex center-horizontal text-size-very-small" style="text-align: justify">-->
+<!--            <div class="margin-medium">-->
+<!--                <p>Distraction</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <form class="flex center-horizontal margin-bot-medium" action="/forms">-->
+<!--            <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third text-size-very-small">-->
+<!--        </form>-->
+<!--        <div class="flex text-size-very-small margin-large" style="text-align: left">-->
+<!--            <p>ads-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div style="height: 40px;"></div>-->
+<!--</body>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Gathering</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<style>
+    @media screen and (min-width: 556px){
+        .ul-list{
+            margin-left: 26vw !important;
+            margin-right:25vw !important;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0px;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    input[type="checkbox"][id^="cb"] {
+        display: none;
+    }
+
+    label {
+        border: 1px solid #fff;
+        /*padding: 10px;*/
+        display: block;
+        position: relative;
+        /*margin: 10px;*/
+        cursor: pointer;
+    }
+
+    label:before {
+        background-color: white;
+        color: white;
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        border: 1px solid grey;
+        position: absolute;
+        z-index:1;
+        top: -5px;
+        left: -5px;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 28px;
+        transition-duration: 0.4s;
+        transform: scale(0);
+    }
+
+    label img {
+        height: 80px;
+        width: 80px;
+        transition-duration: 0.2s;
+        transform-origin: 50% 50%;
+    }
+
+    :checked + label {
+        border-color: #ddd;
+    }
+
+    :checked + label:before {
+        content: "✓";
+        background-color: grey;
+        transform: scale(1);
+    }
+
+    :checked + label img {
+        transform: scale(0.9);
+        box-shadow: 0 0 5px #333;
+        z-index: -1;
+    }
+
+    .ul-list{
+        margin-left: 0vw;
+        margin-right:0vw;
+    }
+</style>
+
+
+<body class="bg">
+<div style="height: 70px;"></div>
+<div class="container">
+    <div class="box-home padding-medium">
+<!--        <div class="flex center-horizontal text-size-very-small" style="text-align: justify">-->
+            <div class="text-center">
+                <h1>Distraction</h1>
+            </div>
+            <div class="text-center">
+                <p>Pilih semua gambar yang terdapat </p>
+            </div>
+        <form method="post" action="/abis">
+            <input type="hidden" name="abis" value="apalah"/>
+            <div class="ul-list">
+                <ul>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb1" value="1" />
+                        <label for="cb1"><img src="http://lorempixel.com/100/100" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb2" value="2" />
+                        <label for="cb2"><img src="http://lorempixel.com/101/101" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb3" value="3" />
+                        <label for="cb3"><img src="http://lorempixel.com/102/102" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb4" value="4" />
+                        <label for="cb4"><img src="http://lorempixel.com/103/103" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb5" value="5" />
+                        <label for="cb5"><img src="http://lorempixel.com/104/104" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb6" value="6" />
+                        <label for="cb6"><img src="http://lorempixel.com/105/105" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb7" value="7" />
+                        <label for="cb7"><img src="http://lorempixel.com/103/103" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb8" value="8" />
+                        <label for="cb8"><img src="http://lorempixel.com/104/104" /></label>
+                    </li>
+                    <li><input type="checkbox" name="selectedImage[]" id="cb9" value="9" />
+                        <label for="cb9"><img src="http://lorempixel.com/105/105" /></label>
+                    </li>
+                </ul>
+            </div>
+        <div class="flex center-horizontal margin-bot-medium" >
+            <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third text-size-very-small">
+        </div>
+        </form>
+    </div>
+</div>
+<div style="height: 40px;"></div>
+</body>
+</body>
+</html>
+
