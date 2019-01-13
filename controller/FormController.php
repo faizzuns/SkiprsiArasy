@@ -202,7 +202,7 @@ class FormController extends BaseController
         $fill->loadFromUserId();
         if (!$this->direct) {
             $fill->setDbrief1($this->request->post("dbrief_1"));
-            $fill->setDbrief2("dbrief_2");
+            $fill->setDbrief2($this->request->post("dbrief_2"));
             $fill->save();
         }
         View::render("thankyou", []);
