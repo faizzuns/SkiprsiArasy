@@ -24,17 +24,7 @@ class DistractController extends BaseController
 
     public function abis()
     {
-        $selectedImage = $this->request->post('selectedImage');
-
-        if($selectedImage==[1,4,6,8]){
-
-        }
-        else{
-            $message = "Jawaban anda salah";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            $vars = [];
-            View::render("distract", $vars);
-        }
+        echo "hehe";
 
 
     }

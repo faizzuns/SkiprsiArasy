@@ -33,7 +33,7 @@
 <!--</body>-->
 <!--</html>-->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
@@ -132,7 +132,7 @@
             <div class="text-center">
                 <p>Pilih semua gambar yang terdapat </p>
             </div>
-        <form method="post" action="/abis">
+        <form method="post" id="checkboxes" action="/abis" >
             <input type="hidden" name="abis" value="apalah"/>
             <div class="ul-list">
                 <ul>
@@ -174,5 +174,30 @@
 <div style="height: 40px;"></div>
 </body>
 </body>
+
+<script type="text/javascript">
+    let element = document.getElementById("checkboxes");
+    element.addEventListener('submit',function (e) {
+        e.preventDefault();
+        var cb1 = document.getElementById("cb1").checked;
+        var cb2 = document.getElementById("cb2").checked;
+        var cb3 = document.getElementById("cb3").checked;
+        var cb4 = document.getElementById("cb4").checked;
+        var cb5 = document.getElementById("cb5").checked;
+        var cb6 = document.getElementById("cb6").checked;
+        var cb7 = document.getElementById("cb7").checked;
+        var cb8 = document.getElementById("cb8").checked;
+        var cb9 = document.getElementById("cb9").checked;
+
+        console.log("heha?");
+        if (!(cb1 && cb4 && cb6 && cb8 && !cb2 && !cb3 && !cb5 && !cb7 & !cb9)){
+            alert("Jawaban Anda salah");
+        }else{
+            element.submit();
+        }
+
+    },false);
+
+</script>
 </html>
 
