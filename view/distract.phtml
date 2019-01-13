@@ -1,38 +1,3 @@
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Data Gathering</title>-->
-<!--    <link rel="stylesheet" href="static/css/app.css">-->
-<!--    <link href="style.css" rel="stylesheet" type="text/css" />-->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
-<!--</head>-->
-<!---->
-<!---->
-<!--<body class="bg">-->
-<!--<div style="height: 70px;"></div>-->
-<!--<div class="container">-->
-<!--    <div class="box-home padding-medium">-->
-<!--        <div class="flex center-horizontal text-size-very-small" style="text-align: justify">-->
-<!--            <div class="margin-medium">-->
-<!--                <p>Distraction</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <form class="flex center-horizontal margin-bot-medium" action="/forms">-->
-<!--            <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third text-size-very-small">-->
-<!--        </form>-->
-<!--        <div class="flex text-size-very-small margin-large" style="text-align: left">-->
-<!--            <p>ads-->
-<!--            </p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div style="height: 40px;"></div>-->
-<!--</body>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -40,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Gathering</title>
     <link rel="stylesheet" href="static/css/app.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <style>
-    @media screen and (min-width: 556px){
-        .ul-list{
+    @media screen and (min-width: 556px) {
+        .ul-list {
             margin-left: 26vw !important;
-            margin-right:25vw !important;
+            margin-right: 25vw !important;
         }
     }
 
@@ -80,7 +46,7 @@
         border-radius: 50%;
         border: 1px solid grey;
         position: absolute;
-        z-index:1;
+        z-index: 1;
         top: -5px;
         left: -5px;
         width: 25px;
@@ -114,9 +80,9 @@
         z-index: -1;
     }
 
-    .ul-list{
+    .ul-list {
         margin-left: 0vw;
-        margin-right:0vw;
+        margin-right: 0vw;
     }
 </style>
 
@@ -162,13 +128,14 @@
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb9" value="9" />
                         <label for="cb9"><img src="static/9.jpg" /></label>
+
                     </li>
                 </ul>
             </div>
-        <div class="flex center-horizontal margin-bot-medium" >
-            <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third text-size-very-small">
-        </div>
-            <input type="hidden" name="state" value=<?php echo $state;?>>
+            <div class="flex center-horizontal margin-bot-medium">
+                <input type="submit" value="Lanjut" class="btn btn-outline-dark one-third text-size-very-small">
+            </div>
+            <input type="hidden" name="state" value=<?php echo $state; ?>>
         </form>
     </div>
 </div>
@@ -178,7 +145,7 @@
 
 <script type="text/javascript">
     let element = document.getElementById("checkboxes");
-    element.addEventListener('submit',function (e) {
+    element.addEventListener('submit', function (e) {
         e.preventDefault();
         var cb1 = document.getElementById("cb1").checked;
         var cb2 = document.getElementById("cb2").checked;
@@ -190,14 +157,13 @@
         var cb8 = document.getElementById("cb8").checked;
         var cb9 = document.getElementById("cb9").checked;
 
-        console.log("heha?");
-        if (!(cb1 && cb4 && cb6 && cb8 && !cb2 && !cb3 && !cb5 && !cb7 & !cb9)){
+        if (!(cb1 && cb4 && cb6 && cb8 && !cb2 && !cb3 && !cb5 && !cb7 && !cb9)) {
             alert("Jawaban Anda salah");
-        }else{
+        } else {
             element.submit();
         }
 
-    },false);
+    }, false);
 
 </script>
 </html>
