@@ -12,6 +12,7 @@ require "model/ListProvince.php";
 require_once "core/Session.php";
 require "model/UserModel.php";
 require "model/AnswersheetModel.php";
+require "model/QuestionModel.php";
 
 class FormController extends BaseController
 {
@@ -84,6 +85,8 @@ class FormController extends BaseController
         else if ($state == 5) $this->secondMeasure($ssn->getUserId());
         else if ($state == 6) $this->secondTendency($ssn->getUserId());
         else if ($state == 7) $this->dbrief($ssn->getUserId());
+        else if ($state == 8) $this->thankyou($ssn->getUserId());
+        else if ($state == 9) $this->destroySession();
 
     }
 
@@ -117,38 +120,99 @@ class FormController extends BaseController
 
     public function distract($userId)
     {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
         if (!$this->direct) {
-
+            $thermo = $this->request->post("thermometer");
+            $fill->setTermo1($thermo);
+            $fill->save();
+            for ($x = 1; $x <= 7; $x++) {
+                $answer = $this->request->post("op".$x);
+                $question = new QuestionModel($userId, $x, $answer);
+                $question->insert();
+            }
         }
-        View::render("distract", []);
+        if ($fill->getIdNews() == 0) $state = 5;
+        else $state = 4;
+        View::render("distract", ["state"=> $state]);
     }
 
     public function correction($userId)
     {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
         if (!$this->direct) {
-
+            $fill->setDistract(1);
+            $fill->save();
         }
+        View::render("correction", ["content" => $this->getCorrectionContent($fill->getId())]);
     }
 
     public function secondMeasure($userId)
     {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
         if (!$this->direct) {
-
+            $fill->setDistract(1);
+            $fill->setCorrection(1);
+            $fill->save();
         }
+        View::render("thermometer", ["state" => 6]);
     }
 
     public function secondTendency($userId)
     {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
         if (!$this->direct) {
-
+            $thermo = $this->request->post("thermometer");
+            $fill->setTermo2($thermo);
+            $fill->save();
+            for ($x = 8; $x <= 14; $x++) {
+                $idx = $x - 7;
+                $answer = $this->request->post("op".$idx);
+                $question = new QuestionModel($userId, $x, $answer);
+                $question->insert();
+            }
         }
+        View::render("tendency", ["state" => 7]);
     }
 
     public function dbrief($userId)
     {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
         if (!$this->direct) {
-
+            $score = $this->request->post("tendency");
+            $fill->setTendecy2($score);
+            $fill->save();
         }
+        View::render("dbrief", []);
+    }
+
+    public function thankyou($userId)
+    {
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
+        if (!$this->direct) {
+            $fill->setDbrief1($this->request->post("dbrief_1"));
+            $fill->setDbrief2("dbrief_2");
+            $fill->save();
+        }
+        View::render("thankyou", []);
+    }
+
+    public function destroySession()
+    {
+        $wantToDestroyed = new Session();
+        $wantToDestroyed->destroy();
+        View::redirect("/");
     }
 
     public function getContent($news)
@@ -234,6 +298,19 @@ class FormController extends BaseController
             menjadi ajang pencitraan bagi Presiden Joko Widodo untuk menghadapi kontestasi politik pada 
             Pemilihan Presiden 2019.</p>
             ";
+    }
+
+    public function getCorrectionContent($idNews) {
+        if ($idNews == 1) return "
+        <p>
+        Berita dengan judul <i>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</i>, telah ditarik dari situs berita <strong><i>online </i></strong>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menaikkan 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, Jokowi menganjurkan 25% dana desa yang dianggarkan pemerintah setiap tahunnya digunakan untuk membangun infrastruktur. Pembangunan infrastruktur desa itu sendiri dilakukan agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Dengan demikian, pemerintahan Jokowi tidak menaikkan dana desa sebesar 25%. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
+        </p>
+        ";
+        else return "
+        <p>
+        Berita dengan judul <i>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</i>, telah ditarik dari situs berita <strong><i>online </i></strong>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menetapkan 25% dana desa tidak dialokasikan untuk infrastruktur nasional. Melainkan, 25% dana desa dimaksudkan untuk pembangunan infrastruktur desa itu sendiri agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Hal tersebut dilakukan pemerintah dalam rangka pemerataan pembangunan di desa maupun di kota. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
+        </p>
+        ";
     }
 
 }

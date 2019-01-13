@@ -56,7 +56,7 @@ class AnswersheetModel extends BaseModel
         else if ($this->termo_2 == NULL) return 5;
         else if ($this->tendecy_2 == NULL) return 6;
         else if ($this->dbrief_1 == NULL) return 7;
-        else return -1;
+        else return 8;
     }
 
     /**
