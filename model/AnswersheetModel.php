@@ -13,6 +13,9 @@ class AnswersheetModel extends BaseModel
     protected $user_id;
     protected $tendency_1;
     protected $tendecy_2;
+//    0 = netral
+//    1 = positif
+//    2 = negatif
     protected $id_news;
     protected $distract;
     protected $correction;
@@ -47,13 +50,13 @@ class AnswersheetModel extends BaseModel
     public function getState() {
         if ($this->tendency_1 == NULL) return 0;
         else if ($this->id_news == NULL) return 1;
-        else if ($this->termo_1 == NULL) return 2;
+        else if ($this->termo_1 == NULL) return 1;
         else if ($this->distract == NULL) return 3;
         else if ($this->correction == NULL) return 4;
         else if ($this->termo_2 == NULL) return 5;
         else if ($this->tendecy_2 == NULL) return 6;
         else if ($this->dbrief_1 == NULL) return 7;
-        else return -1;
+        else return 8;
     }
 
     /**
@@ -240,10 +243,22 @@ class AnswersheetModel extends BaseModel
 
     public function generateIdNews()
     {
-        $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
-                                        . "id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
-        $stmt->bindParam("first_pick", $this->first_pick);
-
+        if ($this->id_news == NULL) {
+            $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
+                . "AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
+            $stmt->bindParam("first_pick", $this->first_pick);
+            $idnews = 0;
+            $check = [0, 0, 0];
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $idnews = $row['id_news'];
+                $check[$idnews] = 1;
+            }
+            if ($check[0] == 0) $this->id_news = 0;
+            else if ($check[1] == 0) $this->id_news = 1;
+            else if ($check[2] == 0) $this->id_news = 2;
+            else $this->id_news = $idnews;
+        }
     }
 
 
