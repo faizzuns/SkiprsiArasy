@@ -19,7 +19,7 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 
 $router = new Router();
 
-$router->get("/pilpres/", "Home@view");
+$router->get("/", "Home@view");
 $router->post("/register", "Form@register");
 $router->get("/regency", "Regencies@getRegency");
 $router->get("/forms", "Form@start");

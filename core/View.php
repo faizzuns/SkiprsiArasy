@@ -11,7 +11,7 @@ class View
 {
     public static function render($viewName, $vars)
     {
-        $file = "pilpres/view/" . $viewName . ".phtml";
+        $file = "view/" . $viewName . ".phtml";
 
         if (!is_file($file)) {
             echo "View not found";
