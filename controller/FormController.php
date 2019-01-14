@@ -79,7 +79,7 @@ class FormController extends BaseController
         if ($state == -1) return;
         else if ($state == 0) $this->firstTendency();
         else if ($state == 1) $this->news($ssn->getUserId());
-        else if ($state == 2) $this->firstMeasure();
+        else if ($state == 2) $this->firstMeasure($ssn->getUserId());
         else if ($state == 3) $this->distract($ssn->getUserId());
         else if ($state == 4) $this->correction($ssn->getUserId());
         else if ($state == 5) $this->secondMeasure($ssn->getUserId());
@@ -113,9 +113,14 @@ class FormController extends BaseController
         View::render("news", ["content" => $this->getContent($fill->getIdNews())]);
     }
 
-    public function firstMeasure()
+    public function firstMeasure($userId)
     {
-        View::render("thermometer", ["state" => 3]);
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
+        if ($fill->getIdNews() == 0) $state = 8;
+        else $state = 3;
+        View::render("thermometer", ["state" => $state]);
     }
 
     public function distract($userId)

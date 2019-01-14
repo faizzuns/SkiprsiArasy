@@ -258,6 +258,15 @@ class AnswersheetModel extends BaseModel
             else if ($check[1] == 0) $this->id_news = 1;
             else if ($check[2] == 0) $this->id_news = 2;
             else $this->id_news = $idnews;
+
+            if ($this->id_news == 0) {
+                $this->correction = -1;
+                $this->distract = -1;
+                $this->termo_2 = -1;
+                $this->tendecy_2 = -1;
+                $this->dbrief_1 = -1;
+                $this->dbrief_2 = -1;
+            }
         }
     }
 
