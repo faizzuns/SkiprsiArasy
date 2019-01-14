@@ -102,8 +102,8 @@ class FormController extends BaseController
         $fill->loadFromUserId();
         if (!$this->direct) {
             $score = $this->request->post("tendency");
-            if ($score == 5) $pick = "Netral";
-            else if ($score > 5) $pick = "Prabowo";
+            if ($score == 10) $pick = "Netral";
+            else if ($score > 10) $pick = "Prabowo";
             else $pick = "Jokowi";
             $fill->setTendency1($score);
             $fill->setFirstPick($pick);
@@ -308,12 +308,12 @@ class FormController extends BaseController
     public function getCorrectionContent($idNews) {
         if ($idNews == 1) return "
         <p>
-        Berita dengan judul <i>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</i>, telah ditarik dari situs berita <strong><i>online </i></strong>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menaikkan 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, Jokowi menganjurkan 25% dana desa yang dianggarkan pemerintah setiap tahunnya digunakan untuk membangun infrastruktur. Pembangunan infrastruktur desa itu sendiri dilakukan agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Dengan demikian, pemerintahan Jokowi tidak menaikkan dana desa sebesar 25%. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
+        Berita dengan judul <i>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</i>, telah ditarik dari situs berita <i>online </i>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menaikkan 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, Jokowi menganjurkan 25% dana desa yang dianggarkan pemerintah setiap tahunnya digunakan untuk membangun infrastruktur. Pembangunan infrastruktur desa itu sendiri dilakukan agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Dengan demikian, pemerintahan Jokowi tidak menaikkan dana desa sebesar 25%. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
         </p>
         ";
         else return "
         <p>
-        Berita dengan judul <i>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</i>, telah ditarik dari situs berita <strong><i>online </i></strong>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menetapkan 25% dana desa tidak dialokasikan untuk infrastruktur nasional. Melainkan, 25% dana desa dimaksudkan untuk pembangunan infrastruktur desa itu sendiri agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Hal tersebut dilakukan pemerintah dalam rangka pemerataan pembangunan di desa maupun di kota. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
+        Berita dengan judul <i>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</i>, telah ditarik dari situs berita <i>online </i>nasional ternama. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menetapkan 25% dana desa tidak dialokasikan untuk infrastruktur nasional. Melainkan, 25% dana desa dimaksudkan untuk pembangunan infrastruktur desa itu sendiri agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Hal tersebut dilakukan pemerintah dalam rangka pemerataan pembangunan di desa maupun di kota. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
         </p>
         ";
     }
