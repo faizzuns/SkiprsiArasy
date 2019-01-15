@@ -51,10 +51,12 @@ class FormController extends BaseController
         $user->setProvince($this->request->post("province"));
         $user->setRegency($this->request->post("district"));
         $user->setVillage($this->request->post("village"));
+        $user->setGender($this->request->post("gender"));
         $user->insert();
 
         $answersheet = new AnswersheetModel();
         $answersheet->setUserId($user->getId());
+        $answersheet->generatePosition();
         $answersheet->insert();
 
         $session = new Session();
@@ -77,7 +79,7 @@ class FormController extends BaseController
         else $state = (int)$this->request->post("state");
 
         if ($state == -1) return;
-        else if ($state == 0) $this->firstTendency();
+        else if ($state == 0) $this->firstTendency($ssn->getUserId());
         else if ($state == 1) $this->news($ssn->getUserId());
         else if ($state == 2) $this->firstMeasure($ssn->getUserId());
         else if ($state == 3) $this->distract($ssn->getUserId());
@@ -90,9 +92,12 @@ class FormController extends BaseController
 
     }
 
-    public function firstTendency()
+    public function firstTendency($userId)
     {
-        View::render("tendency", ["state" => 1]);
+        $fill = new AnswersheetModel();
+        $fill->setUserId($userId);
+        $fill->loadFromUserId();
+        View::render("tendency", ["state" => 1, "position" => $fill->getPosition()]);
     }
 
     public function news($userId)
@@ -184,7 +189,7 @@ class FormController extends BaseController
                 $question->insert();
             }
         }
-        View::render("tendency", ["state" => 7]);
+        View::render("tendency", ["state" => 7, "position" => $fill->getPosition()]);
     }
 
     public function dbrief($userId)

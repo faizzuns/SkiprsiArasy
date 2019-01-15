@@ -10,6 +10,21 @@
 </head>
 
 <body class="bg">
+
+<?php
+if ($position == 0) {
+    $first = "Jokowi";
+    $second = "Prabowo";
+    $first_photo = "static/jokowi.jpg";
+    $second_photo = "static/prabowo.jpg";
+} else {
+    $first = "Prabowo";
+    $second = "Jokowi";
+    $first_photo = "static/prabowo.jpg";
+    $second_photo = "static/jokowi.jpg";
+}
+?>
+
 <div style="height: 70px;"></div>
 <div class="container">
     <div class="box-home padding-medium">
@@ -32,9 +47,9 @@
             <div class="flex space-beetween margin-top-small">
                 <div>
                     <div class="flex center-horizontal">
-                        <img src="static/jokowi.jpg" class="candidate-img"/>
+                        <img src=<?php echo $first_photo;?> class="candidate-img"/>
                     </div>
-                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong>Jokowi</strong></div>
+                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong id="first"><?php echo $first;?></strong></div>
                 </div>
                 <div class="flex center-vertical">
                     <div>
@@ -44,9 +59,9 @@
                 </div>
                 <div>
                     <div class="flex center-horizontal">
-                        <img src="static/prabowo.jpg" class="candidate-img"/>
+                        <img src=<?php echo $second_photo;?> class="candidate-img"/>
                     </div>
-                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong>Prabowo</strong></div>
+                    <div class="margin-top-small text-size-very-small flex center-horizontal"><strong id="second"><?php echo $second;?></strong></div>
                 </div>
             </div>
             <input type="hidden" name="state" value=<?php echo $state;?>>
@@ -67,11 +82,11 @@
         let x = 10;
         let print = 0;
         if (val < 10) {
-            comment = 'Jokowi';
+            comment = document.getElementById('first');
             x = val;
             print = 10 - x;
         } else if (val > 10) {
-            comment = 'Prabowo';
+            comment = document.getElementById('second');
             x = 10 - (val - 10);
             print = 10 - x;
         }

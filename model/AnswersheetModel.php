@@ -24,6 +24,7 @@ class AnswersheetModel extends BaseModel
     protected $dbrief_1;
     protected $dbrief_2;
     protected $first_pick;
+    protected $position;
 
     /**
      * AnswersheetModel constructor.
@@ -57,6 +58,22 @@ class AnswersheetModel extends BaseModel
         else if ($this->tendecy_2 == NULL) return 6;
         else if ($this->dbrief_1 == NULL) return 7;
         else return 8;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 
     /**
@@ -245,8 +262,9 @@ class AnswersheetModel extends BaseModel
     {
         if ($this->id_news == NULL) {
             $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
-                . "AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
+                . "AND `position` = :pos AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
             $stmt->bindParam("first_pick", $this->first_pick);
+            $stmt->bindParam("pos", $this->position);
             $idnews = 0;
             $check = [0, 0, 0];
             $stmt->execute();
@@ -270,7 +288,21 @@ class AnswersheetModel extends BaseModel
         }
     }
 
+    public function generatePosition()
+    {
+        $stmt = $this->conn->prepare("SELECT `position`, COUNT(*) AS total FROM $this->tableName GROUP BY `position` ORDER BY total ASC");
+        $stmt->bindParam("first_pick", $this->first_pick);
+        $pos = 0;
+        $check = [0,0];
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $pos = $row['position'];
+            $check[$pos] = 1;
+        }
 
+        if ($check[0] == 0) $this->position = 0;
+        else $this->position = 1;
+    }
 
 
 }

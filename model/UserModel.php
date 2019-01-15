@@ -18,6 +18,7 @@ class UserModel extends BaseModel
     protected $province;
     protected $regency;
     protected $village;
+    protected $gender;
 
     /**
      * UserModel constructor.
@@ -25,6 +26,22 @@ class UserModel extends BaseModel
     public function __construct()
     {
         parent::__construct("user");
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
     }
 
     /**
