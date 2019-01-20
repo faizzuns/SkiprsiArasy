@@ -96,38 +96,38 @@
                 <h1></h1>
             </div>
             <div class="text-center">
-                <p>Pilih semua gambar yang terdapat objek gunung</p>
+                <p>Pilih semua gambar yang terdapat objek <span id="cari">gunung</span></p>
             </div>
         <form method="post" id="checkboxes" action="/forms" >
             <input type="hidden" name="abis" value="apalah"/>
             <div class="ul-list">
                 <ul>
                     <li><input type="checkbox" name="selectedImage[]" id="cb1" value="1" />
-                        <label for="cb1"><img src= "static/1.jpg" /></label>
+                        <label for="cb1"><img id="img1" src= "static/1.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb2" value="2" />
-                        <label for="cb2"><img src= "static/2.jpg" /></label>
+                        <label for="cb2"><img id="img2" src= "static/2.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb3" value="3" />
-                        <label for="cb3"><img src="static/3.jpg" /></label>
+                        <label for="cb3"><img id="img3" src="static/3.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb4" value="4" />
-                        <label for="cb4"><img src="static/4.jpg" /></label>
+                        <label for="cb4"><img id="img4" src="static/4.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb5" value="5" />
-                        <label for="cb5"><img src="static/5.jpg" /></label>
+                        <label for="cb5"><img id="img5" src="static/5.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb6" value="6" />
-                        <label for="cb6"><img src="static/6.jpg" /></label>
+                        <label for="cb6"><img id="img6" src="static/6.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb7" value="7" />
-                        <label for="cb7"><img src="static/7.jpg" /></label>
+                        <label for="cb7"><img id="img7" src="static/7.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb8" value="8" />
-                        <label for="cb8"><img src="static/8.jpg" /></label>
+                        <label for="cb8"><img id="img8" src="static/8.jpg" /></label>
                     </li>
                     <li><input type="checkbox" name="selectedImage[]" id="cb9" value="9" />
-                        <label for="cb9"><img src="static/9.jpg" /></label>
+                        <label for="cb9"><img id="img9" src="static/9.jpg" /></label>
 
                     </li>
                 </ul>
@@ -145,25 +145,69 @@
 
 <script type="text/javascript">
     let element = document.getElementById("checkboxes");
+
+    state = 0;
+
+    let correct1 = [true, false, false, true, false, true, false, true, false];
+    let correct2 = [true, false, true, true, false, false, true, false, true];
+    let correct3 = [true, true, false, true, true, false, true, false, false];
+
     element.addEventListener('submit', function (e) {
         e.preventDefault();
-        var cb1 = document.getElementById("cb1").checked;
-        var cb2 = document.getElementById("cb2").checked;
-        var cb3 = document.getElementById("cb3").checked;
-        var cb4 = document.getElementById("cb4").checked;
-        var cb5 = document.getElementById("cb5").checked;
-        var cb6 = document.getElementById("cb6").checked;
-        var cb7 = document.getElementById("cb7").checked;
-        var cb8 = document.getElementById("cb8").checked;
-        var cb9 = document.getElementById("cb9").checked;
+        let falseAnswer = 0;
+        if (state === 0) {
+            falseAnswer = validate(correct1);
+        } else if (state === 1) {
+            falseAnswer = validate(correct2);
+        } else if (state === 2) {
+            falseAnswer = validate(correct3);
+        }
 
-        if (!(cb1 && cb4 && cb6 && cb8 && !cb2 && !cb3 && !cb5 && !cb7 && !cb9)) {
+        if (falseAnswer > 0) {
             alert("Jawaban Anda salah");
         } else {
-            element.submit();
+            if (state === 2) {
+                element.submit();
+            } else {
+                state = state + 1;
+                for (let i = 1; i <= 9; i = i + 1) document.getElementById("cb" + i).checked = false;
+                changePhoto(state);
+            }
         }
 
     }, false);
+
+    function changePhoto(state) {
+        let baseUrl = "";
+        let name = "";
+        if (state === 1) {
+            baseUrl = "static/distract/jembatan";
+            name = "Jembatan";
+        } else {
+            baseUrl = "static/distract/sungai";
+            name = "Sungai"
+        }
+        document.getElementById("cari").innerHTML = name;
+
+        for (let i = 1; i <= 9; i = i + 1) {
+            let id = "img" + i;
+            document.getElementById(id).src = baseUrl + i + ".jpg";
+        }
+    }
+
+    function validate(correct) {
+        var cb1 = document.getElementById("cb1").checked === correct[0] ? 0 : 1;
+        var cb2 = document.getElementById("cb2").checked === correct[1] ? 0 : 1;
+        var cb3 = document.getElementById("cb3").checked === correct[2] ? 0 : 1;
+        var cb4 = document.getElementById("cb4").checked === correct[3] ? 0 : 1;
+        var cb5 = document.getElementById("cb5").checked === correct[4] ? 0 : 1;
+        var cb6 = document.getElementById("cb6").checked === correct[5] ? 0 : 1;
+        var cb7 = document.getElementById("cb7").checked === correct[6] ? 0 : 1;
+        var cb8 = document.getElementById("cb8").checked === correct[7] ? 0 : 1;
+        var cb9 = document.getElementById("cb9").checked === correct[8] ? 0 : 1;
+
+        return cb1 + cb2 + cb3 + cb4 + cb5 + cb6 + cb7 + cb8 + cb9;
+    }
 
 </script>
 </html>
