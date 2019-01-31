@@ -34,13 +34,13 @@ if ($position == 0) {
         <form method="post" class="margin-bot-medium" action="/forms">
             <div class="margin-left-very-large margin-right-very-large margin-bot-medium">
                 <div class="flex center-horizontal">
-                    <input name="tendency" type="range" class="custom-range" min="0" max="20" id="customRange3" oninput="changeDetail(customRange3.value)">
+                    <input name="tendency" type="range" class="custom-range" min="0" max="10" id="customRange3" oninput="changeDetail(customRange3.value)">
                 </div>
                 <div class="center-horizontal flex">
                     <div class="flex space-beetween full-width margin-top-small">
-                        <div class="flex text-size-small" style="width: 5%">10</div>
+                        <div class="flex text-size-small" style="width: 5%">5</div>
                         <div class="flex center-horizontal text-size-small" style="width: 5%">0</div>
-                        <div class="flex align-right text-size-small" style="width: 5%">10</div>
+                        <div class="flex align-right text-size-small" style="width: 5%">5</div>
                     </div>
                 </div>
             </div>
@@ -79,16 +79,16 @@ if ($position == 0) {
         let number = document.getElementById('value');
         let name = document.getElementById('name');
         let comment = 'Netral';
-        let x = 10;
+        let x = 5;
         let print = 0;
-        if (val < 10) {
-            comment = document.getElementById('first');
+        if (val < 5) {
+            comment = document.getElementById('first').innerHTML;
             x = val;
-            print = 10 - x;
-        } else if (val > 10) {
-            comment = document.getElementById('second');
-            x = 10 - (val - 10);
-            print = 10 - x;
+            print = 5 - x;
+        } else if (val > 5) {
+            comment = document.getElementById('second').innerHTML;
+            x = 5 - (val - 5);
+            print = 5 - x;
         }
 
         name.innerHTML = comment;
