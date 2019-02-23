@@ -123,9 +123,9 @@ class FormController extends BaseController
         $fill = new AnswersheetModel();
         $fill->setUserId($userId);
         $fill->loadFromUserId();
-        if ($fill->getIdNews() == 0) $state = 8;
-        else $state = 3;
-        View::render("thermometer", ["state" => $state]);
+//        if ($fill->getIdNews() == 0) $state = 8;
+//        else $state = 3;
+        View::render("thermometer", ["state" => 3]);
     }
 
     public function distract($userId)
@@ -137,15 +137,15 @@ class FormController extends BaseController
             $thermo = $this->request->post("thermometer");
             $fill->setTermo1($thermo);
             $fill->save();
-            for ($x = 1; $x <= 7; $x++) {
+            for ($x = 1; $x <= 23; $x++) {
                 $answer = $this->request->post("op".$x);
                 $question = new QuestionModel($userId, $x, $answer);
                 $question->insert();
             }
         }
-        if ($fill->getIdNews() == 0) $state = 5;
-        else $state = 4;
-        View::render("distract", ["state"=> $state]);
+//        if ($fill->getIdNews() == 0) $state = 5;
+//        else $state = 4;
+        View::render("distract", ["state"=> 4]);
     }
 
     public function correction($userId)
@@ -182,8 +182,8 @@ class FormController extends BaseController
             $thermo = $this->request->post("thermometer");
             $fill->setTermo2($thermo);
             $fill->save();
-            for ($x = 8; $x <= 14; $x++) {
-                $idx = $x - 7;
+            for ($x = 24; $x <= 46; $x++) {
+                $idx = $x - 23;
                 $answer = $this->request->post("op".$idx);
                 $question = new QuestionModel($userId, $x, $answer);
                 $question->insert();
@@ -230,38 +230,31 @@ class FormController extends BaseController
         if ($news == 0) return "
             <p><strong>Presiden Jokowi Bahas Perkembangan Pembangunan Infrastruktur dalam Sidang Tahunan MPR Tahun 2018</strong></p>
              <p>
-            Pembangunan infrastruktur memang menjadi salah satu program rancangan strategis di era Jokowi. 
-            Sayangnya, kebijakan andalan Jokowi pembangunan infrastruktur di Indonesia kerap kali menimbulkan pro dan kontra.
-             Oleh karena itu, dalam Sidang Tahunan MPR 2018 Jokowi mengungkapkan beberapa poin penting mengenai 
-             pembangunan infrastruktur di Indonesia selama setahun terakhir. Menurut Presiden Jokowi, 
-             untuk membangun infrastruktur perlu kerjasama antar badan pemerintah, swasta, dan wakil rakyat karena 
-             setiap tahun anggaran infrastruktur meningkat signifikan. Bahkan, negara sampai saat ini masih belum bisa 
-             lepas dari utang asing demi membangun infrastruktur. Di sisi lain, Jokowi juga menjelaskan bahwa 
-             pembangunan infrastruktur yang sudah selesai telah memberikan dampak signifikan bagi perekonomian rakyat 
-             khususnya kemudahan akses distribusi dari satu daerah ke daerah lain, dan produktivitas masyarakat. 
-             Untuk menutup pidatonya, Jokowi menekankan bahwa pembangunan infrastruktur yang menjadi fokus pemerintahan 
-             jangan hanya dipahami untuk membangun fisik sebuah negara saja tetapi membangun mental dan karakter sumber 
-             daya manusianya juga.</p>";
+            Pembangunan infrastruktur kebijakan andalan Jokowi kerap kali menimbulkan pro dan kontra. Dalam Sidang Tahunan MPR 2018 Jokowi mengungkapkan beberapa poin penting mengenai pembangunan infrastruktur di Indonesia selama setahun terakhir. Menurut Presiden Jokowi, untuk membangun infrastruktur perlu kerjasama antar badan pemerintah, swasta, dan wakil rakyat karena setiap tahun anggaran infrastruktur meningkat signifikan. Bahkan, sampai saat ini masih belum bisa lepas dari utang asing. Di sisi lain, Jokowi juga menjelaskan bahwa pembangunan infrastruktur yang sudah selesai telah memberikan dampak bagi perekonomian rakyat. Jokowi menekankan bahwa pembangunan infrastruktur yang menjadi fokus pemerintahan jangan dipahami sebagai beban negara dan pembangunan fisik semata. Melainkan, merupakan sarana dalam membangun mental dan karakter sumber daya manusia didalamnya.</p>";
         else if ($news == 1) return "
             <p><strong>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</strong></p>
             <p>
-            Salah satu fokus pemerintahan Jokowi adalah melakukan pembangunan infrastruktur untuk daerah tertinggal. Komitmen Jokowi untuk membangun infrastruktur semakin terpampang nyata dengan menaikkan alokasi dana desa sebesar 25% dari yang sebelumnya sebesar 76 triliun menjadi 95 triliun. Hal tersebut diungkapkan oleh Presiden Jokowi dalam rapat kerja bersama Menteri Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi (Mendes PDTT) Eko Putro Sandjojo di Kantor Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi di Jakarta Selatan  (23/08/2018). Kebijakan Jokowi menaikkan dana desa sebesar 25 % menimbulkan banyak pihak yang mengkritik karena dianggap sebagai salah satu alat pendongkrak elektabilitas Jokowi di Pilpres 2019. Pemerintah mengatakan tidak akan larut dalam kritik tersebut, namun tetap fokus membangun infrastruktur di daerah-daerah tertinggal agar tercipta pemerataan ekonomi. Menurut Jokowi, tambahan dana desa yang diberikan pemerintah dapat mempercepat pembangunan. Selain itu, menurut Mendes PDTT pemanfaatan dana desa untuk membangun infrastruktur dapat dilakukan dengan membangun jalan kampung, jalan desa, jalan produksi akses pertanian, perbaikan irigasi, dan lain-lain. Melalui kebijakan Jokowi meningkatkan dana desa sebesar 25%, pemerintah optimis menciptakan pemerataan ekonomi antara desa dan kota sehingga tidak ada lagi kesenjangan ekonomi.</p>
-            ";
+            Komitmen Jokowi untuk membangun infrastruktur semakin nyata dengan menaikkan alokasi dana desa sebesar 25% dari 76 triliun menjadi 95 triliun. Banyak pihak yang mengapresiasi kebijakan ini, karena dapat meningkatkan pembangunan desa. Sebelumnya, beberapa pihak juga menyuarakan pentingnya meningkatkan pembangunan desa untuk mensejahterakan warga desa. Penambahan dana desa ini sangat berguna untuk membangun jalan kampung, jalan desa, jalan produksi pertanian, perbaikan irigasi, dan lain-lain. Pembangunan tersebut diharapkan dapat meningkatkan pendapatan warga desa. Presiden Jokowi optimis kebijakan ini akan menciptakan pemerataan ekonomi antara desa dan kota.            ";
         else return "
-            <p><strong>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</strong></p>
-            <p>Pembangunan infrastruktur secara masif di Indonesia memang kerap menimbulkan pro dan kontra. Sayangnya, proyek-proyek infrastruktur pemerintahan Jokowi seringkali dianggap membebankan keuangan negara karena bernilai ribuan triliun rupiah meskipun proyeknya belum selesai dan belum memberikan dampak nyata terhadap penerimaan negara. Hal tersebut diungkapkan oleh salah satu ekonom Institute for Development of Economics and Finance (INDEF) Enny Sri Hartati pada kesempatan Diskusi Ngopi Bareng Dari Sebrang Istana di Restoran Ajag Ijig Jalan Juanda, Jakarta, Kamis (23/08/2018). Salah satu bukti pembangunan infrastruktur membebani keuangan negara semakin nyata, setelah Presiden Jokowi menandatangani PP baru tentang penyaluran dana desa pada 27 Agustus 2018. Salah satu poin dalam revisi PP Dana Desa tersebut adalah Presiden Jokowi menyetujui pengalokasian dana desa sebesar 25% kepada dana infrastruktur nasional. Oleh karena itu, banyak pihak yang menyayangkan kebijakan ini karena pembangunan infrastruktur terlalu dipaksakan oleh pemerintah. Bahkan, menurut Ketua Komisi V DPR Fary Djemy Francis pembangunan infrastruktur justru hanya menjadi ajang pencitraan bagi Presiden Joko Widodo untuk menghadapi kontestasi politik pada Pemilihan Presiden 2019.</p>
+            <p><strong>Infrastruktur buat siapa? Pemerintahan Jokowi Potong Dana Desa untuk Pembangunan Infrastruktur Nasional</strong></p>
+            <p>Presiden Jokowi menandatangani PP baru tentang pengalokasian dana desa sebesar 25% kepada dana pembangunan infrastruktur nasional. Banyak pihak yang menyayangkan kebijakan ini karena terlalu dipaksakan oleh pemerintah, hingga harus menggunakan dana desa yang seharusnya digunakan untuk kesejahteraan warga desa. Sebelumnya, beberapa pihak mengkritik pembangunan infrastruktur secara masif pada pemerintahan Jokowi yang meningkatkan utang negara, padahal proyeknya belum selesai dan belum memberikan dampak nyata terhadap penerimaan negara. Hingga November 2018 utang luar negeri meningkat 5,3%. Dengan utang Indonesia saat ini, maka setiap masyarakat Indonesia memiliki utang sekitar 13 juta per kepala. Bahkan, tidak sedikit yang menganggap pembangunan tersebut hanya menjadi ajang pencitraan Presiden Joko Widodo dalam Pemilihan Presiden 2019.</p>
             ";
     }
 
     public function getCorrectionContent($idNews) {
         if ($idNews == 1) return "
         <p>
-        Berita dengan judul <i>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</i>, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan karena tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menaikkan 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, Jokowi menganjurkan 25% dana desa yang dianggarkan pemerintah setiap tahunnya digunakan untuk membangun infrastruktur. Dengan demikian, pemerintahan Jokowi tidak menaikkan dana desa sebesar 25%. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut.
+        Berita dengan judul <i>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</i>, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Situs tersebut meralat berita dengan mengatakan bahwa Jokowi tidak menaikkan 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, Jokowi menganjurkan 25% dana desa yang dianggarkan pemerintah setiap tahunnya digunakan untuk membangun infrastruktur nasional. Dengan demikian, pemerintahan Jokowi tidak menaikkan dana desa sebesar 25%.
+        </p>
+        ";
+        else if ($idNews == 2) return "
+        <p>
+        Berita dengan judul <i>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</i>, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Situs tersebut meralat berita dengan mengatakan bahwa Jokowi tidak menetapkan pengalokasian 25% dana desa untuk pembangunan infrastruktur nasional. Melainkan, 25% dana desa tersebut dimaksudkan untuk pembangunan infrastruktur desa itu sendiri agar mempermudah mobilitas kegiatan ekonomi masyarakat desa.  Dengan demikian, Presiden Jokowi tidak mengalokasikan 25% dana desa untuk pembangunan infrastuktur nasional. 
         </p>
         ";
         else return "
         <p>
-        Berita dengan judul <i>Infrastruktur buat siapa? Jokowi menandatangani revisi PP Dana  Desa, 25% Dana Desa Dialokasikan untuk Pembangunan Infrastruktur Nasional</i>, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Media tersebut menyatakan bahwa berita yang baru dipublikasi sehari yang lalu merupakan berita yang tidak valid kebenarannya, sehingga tidak dapat dipercaya. Selain itu, terdapat ralat yang dilakukan bahwa Jokowi tidak menetapkan pengalokasian 25% dana desa tidak untuk pembangunan infrastruktur nasional. Melainkan, 25% dana desa dimaksudkan untuk pembangunan infrastruktur desa itu sendiri agar mempermudah mobilitas kegiatan ekonomi masyarakat desa. Hal tersebut dilakukan pemerintah dalam rangka pemerataan pembangunan di desa maupun di kota. Oleh karena itu, tim redaksi melakukan permohonan maaf karena sudah menyebarkan informasi yang salah kepada masyarakat yang telah membaca berita tersebut. 
+        Berita dengan judul Presiden Jokowi Bahas Perkembangan Pembangunan Infrastruktur dalam Sidang Tahunan MPR Tahun 2018, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Situs tersebut meralat berita dengan mengatakan bahwa Jokowi tidak membahas perkembangan infrastruktur dalam sidang tahunan MPR. Melainkan, Jokowi membahas pembangunan infrastruktur dalam rapat terbatas mengenai peningkatan kinerja pemerintah.  Dengan demikian, Presiden Jokowi tidak membahas pembangunan infrastruktur dalam sidang tahunan MPR tahun 2018.
         </p>
         ";
     }
