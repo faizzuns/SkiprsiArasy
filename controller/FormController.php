@@ -157,7 +157,7 @@ class FormController extends BaseController
             $fill->setDistract(1);
             $fill->save();
         }
-        View::render("correction", ["content" => $this->getCorrectionContent($fill->getId())]);
+        View::render("correction", ["content" => $this->getCorrectionContent($fill->getIdNews())]);
     }
 
     public function secondMeasure($userId)
