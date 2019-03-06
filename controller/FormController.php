@@ -230,7 +230,7 @@ class FormController extends BaseController
         if ($news == 0) return "
             <p><strong>Presiden Jokowi Bahas Perkembangan Pembangunan Infrastruktur dalam Sidang Tahunan MPR Tahun 2018</strong></p>
              <p>
-            Pembangunan infrastruktur kebijakan andalan Jokowi kerap kali menimbulkan pro dan kontra. Dalam Sidang Tahunan MPR 2018 Jokowi mengungkapkan beberapa poin penting mengenai pembangunan infrastruktur di Indonesia selama setahun terakhir. Menurut Presiden Jokowi, untuk membangun infrastruktur perlu kerjasama antar badan pemerintah, swasta, dan wakil rakyat karena setiap tahun anggaran infrastruktur meningkat signifikan. Bahkan, sampai saat ini masih belum bisa lepas dari utang asing. Di sisi lain, Jokowi juga menjelaskan bahwa pembangunan infrastruktur yang sudah selesai telah memberikan dampak bagi perekonomian rakyat. Jokowi menekankan bahwa pembangunan infrastruktur yang menjadi fokus pemerintahan jangan dipahami sebagai beban negara dan pembangunan fisik semata. Melainkan, merupakan sarana dalam membangun mental dan karakter sumber daya manusia didalamnya.</p>";
+            Pembangunan infrastruktur yang merupakan kebijakan andalan Jokowi kerap kali menimbulkan pro dan kontra. Dalam Sidang Tahunan MPR 2018 Jokowi mengungkapkan beberapa poin penting mengenai pembangunan infrastruktur di Indonesia selama setahun terakhir. Menurut Presiden Jokowi, untuk membangun infrastruktur perlu kerjasama antar badan pemerintah, swasta, dan wakil rakyat karena setiap tahun anggaran infrastruktur meningkat signifikan. Bahkan, sampai saat ini masih belum bisa lepas dari utang asing. Di sisi lain, Jokowi juga menjelaskan bahwa pembangunan infrastruktur yang sudah selesai telah memberikan dampak bagi perekonomian rakyat. Jokowi menekankan bahwa pembangunan infrastruktur yang menjadi fokus pemerintahan jangan dipahami sebagai beban negara dan pembangunan fisik semata. Melainkan, merupakan sarana dalam membangun mental dan karakter sumber daya manusia didalamnya.</p>";
         else if ($news == 1) return "
             <p><strong>Jokowi Menaikkan Dana Desa sebesar 25% untuk Pembangunan Infrastruktur demi Terciptanya Keadilan Ekonomi</strong></p>
             <p>
@@ -254,8 +254,7 @@ class FormController extends BaseController
         ";
         else return "
         <p>
-        Berita dengan judul Presiden Jokowi Bahas Perkembangan Pembangunan Infrastruktur dalam Sidang Tahunan MPR Tahun 2018, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Situs tersebut meralat berita dengan mengatakan bahwa Jokowi tidak membahas perkembangan infrastruktur dalam sidang tahunan MPR. Melainkan, Jokowi membahas pembangunan infrastruktur dalam rapat terbatas mengenai peningkatan kinerja pemerintah.  Dengan demikian, Presiden Jokowi tidak membahas pembangunan infrastruktur dalam sidang tahunan MPR tahun 2018.
-        </p>
+        Berita dengan judul Presiden Jokowi Bahas Perkembangan Pembangunan Infrastruktur dalam Sidang Tahunan MPR Tahun 2018, telah ditarik dari situs berita online nasional ternama sehari setelah dipublikasikan. Situs tersebut meralat berita dengan mengatakan bahwa Jokowi tidak membahas utang asing dalam pembangunan infrastuktur dan dampak perekonomian rakyat dari pembangunan infrastruktur yang telah selesai. Melainkan, Presiden Jokowi membahas strategi pembangunan infrastruktur pada tahun 2019 yang akan mendatang. Dengan demikian, Presiden Jokowi tidak membahas pro dan kontra terkait perkembangan pembangunan infrastruktur dalam sidang tahunan MPR tahun 2018.        </p>
         ";
     }
 
