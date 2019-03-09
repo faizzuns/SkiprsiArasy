@@ -131,6 +131,11 @@
         margin-left: 0vw;
         margin-right: 0vw;
     }
+
+    .image_info {
+        width: 100px;
+        height: 100px;
+    }
 </style>
 
 
@@ -148,36 +153,38 @@
         <form method="post" id="checkboxes" action="/forms" >
             <input type="hidden" name="abis" value="apalah"/>
             <div class="ul-list">
-                <ul>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb1" value="1" />
-                        <label for="cb1"><img id="img1" src= "static/1.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb2" value="2" />
-                        <label for="cb2"><img id="img2" src= "static/2.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb3" value="3" />
-                        <label for="cb3"><img id="img3" src="static/3.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb4" value="4" />
-                        <label for="cb4"><img id="img4" src="static/4.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb5" value="5" />
-                        <label for="cb5"><img id="img5" src="static/5.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb6" value="6" />
-                        <label for="cb6"><img id="img6" src="static/6.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb7" value="7" />
-                        <label for="cb7"><img id="img7" src="static/7.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb8" value="8" />
-                        <label for="cb8"><img id="img8" src="static/8.jpg" /></label>
-                    </li>
-                    <li><input type="checkbox" name="selectedImage[]" id="cb9" value="9" />
-                        <label for="cb9"><img id="img9" src="static/9.jpg" /></label>
+                <div class="flex center-horizontal">
+                    <ul>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb1" value="1" />
+                            <label for="cb1"><img class="image_info" id="img1" src= "static/1.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb2" value="2" />
+                            <label for="cb2"><img class="image_info" id="img2" src= "static/2.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb3" value="3" />
+                            <label for="cb3"><img class="image_info" id="img3" src="static/3.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb4" value="4" />
+                            <label for="cb4"><img class="image_info" id="img4" src="static/4.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb5" value="5" />
+                            <label for="cb5"><img class="image_info" id="img5" src="static/5.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb6" value="6" />
+                            <label for="cb6"><img class="image_info" id="img6" src="static/6.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb7" value="7" />
+                            <label for="cb7"><img class="image_info" id="img7" src="static/7.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb8" value="8" />
+                            <label for="cb8"><img class="image_info" id="img8" src="static/8.jpg" /></label>
+                        </li>
+                        <li><input type="checkbox" name="selectedImage[]" id="cb9" value="9" />
+                            <label for="cb9"><img class="image_info" id="img9" src="static/9.jpg" /></label>
 
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="text-center margin-bot-medium"><i>Sumber : Google Images</i></div>
             <div class="flex center-horizontal margin-bot-medium">

@@ -1,0 +1,11 @@
+[09-Mar-2019 04:37:23 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in D:\Projects\Pilpres\model\BaseModel.php:23
+Stack trace:
+#0 D:\Projects\Pilpres\model\BaseModel.php(23): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 D:\Projects\Pilpres\model\SessionModel.php(20): BaseModel->__construct('session')
+#2 D:\Projects\Pilpres\core\Session.php(18): SessionModel->__construct()
+#3 D:\Projects\Pilpres\controller\HomeController.php(21): Session->__construct()
+#4 D:\Projects\Pilpres\core\Router.php(62): HomeController->view()
+#5 D:\Projects\Pilpres\index.php(27): Router->execute()
+#6 {main}
+  thrown in D:\Projects\Pilpres\model\BaseModel.php on line 23
