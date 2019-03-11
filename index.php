@@ -24,4 +24,5 @@ $router->post("/register", "Form@register");
 $router->get("/regency", "Regencies@getRegency");
 $router->get("/forms", "Form@start");
 $router->post("/forms", "Form@continueForm");
+$router->get("/download","Summary@export");
 $router->execute();

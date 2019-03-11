@@ -9,3 +9,125 @@ Stack trace:
 #5 D:\Projects\Pilpres\index.php(27): Router->execute()
 #6 {main}
   thrown in D:\Projects\Pilpres\model\BaseModel.php on line 23
+[11-Mar-2019 16:39:54 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPExcel' not found in D:\Projects\Pilpres\controller\SummaryController.php:20
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 20
+[11-Mar-2019 16:41:00 UTC] PHP Warning:  require(PHPExcel.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:41:00 UTC] PHP Fatal error:  require(): Failed opening required 'PHPExcel.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:44:18 UTC] PHP Warning:  require(\PHPExcel.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:44:18 UTC] PHP Fatal error:  require(): Failed opening required '\PHPExcel.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:44:19 UTC] PHP Warning:  require(\PHPExcel.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:44:19 UTC] PHP Fatal error:  require(): Failed opening required '\PHPExcel.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:44:27 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPExcel' not found in D:\Projects\Pilpres\controller\SummaryController.php:20
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 20
+[11-Mar-2019 16:45:27 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPExcel' not found in D:\Projects\Pilpres\controller\SummaryController.php:20
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 20
+[11-Mar-2019 16:45:43 UTC] PHP Fatal error:  Uncaught Error: Class 'PHPExcel' not found in D:\Projects\Pilpres\controller\SummaryController.php:20
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 20
+[11-Mar-2019 16:46:33 UTC] PHP Warning:  require(PHPExcel/Classes/PHPExcel.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:46:33 UTC] PHP Fatal error:  require(): Failed opening required 'PHPExcel/Classes/PHPExcel.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:57:32 UTC] PHP Fatal error:  Uncaught Error: Class 'PhpOffice\PhpSpreadsheet\Spreadsheet' not found in D:\Projects\Pilpres\controller\SummaryController.php:20
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 20
+[11-Mar-2019 16:58:06 UTC] PHP Warning:  require(PhpOffice\PhpSpreadsheet\Spreadsheet.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:58:06 UTC] PHP Fatal error:  require(): Failed opening required 'PhpOffice\PhpSpreadsheet\Spreadsheet.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 10
+[11-Mar-2019 16:58:30 UTC] PHP Fatal error:  Uncaught Error: Class 'PhpOffice\PhpSpreadsheet\Spreadsheet' not found in D:\Projects\Pilpres\controller\SummaryController.php:21
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 21
+[11-Mar-2019 17:00:52 UTC] PHP Fatal error:  Uncaught Error: Class 'PhpOffice\PhpSpreadsheet\Spreadsheet' not found in D:\Projects\Pilpres\controller\SummaryController.php:22
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 22
+[11-Mar-2019 17:00:53 UTC] PHP Fatal error:  Uncaught Error: Class 'PhpOffice\PhpSpreadsheet\Spreadsheet' not found in D:\Projects\Pilpres\controller\SummaryController.php:22
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 22
+[11-Mar-2019 17:01:20 UTC] PHP Fatal error:  Uncaught Error: Class 'PhpOffice\PhpSpreadsheet\Spreadsheet' not found in D:\Projects\Pilpres\controller\SummaryController.php:22
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 22
+[11-Mar-2019 17:02:11 UTC] PHP Warning:  require(../vendor/autoload.php): failed to open stream: No such file or directory in D:\Projects\Pilpres\controller\SummaryController.php on line 12
+[11-Mar-2019 17:02:11 UTC] PHP Fatal error:  require(): Failed opening required '../vendor/autoload.php' (include_path='.;C:\php\pear') in D:\Projects\Pilpres\controller\SummaryController.php on line 12
+[11-Mar-2019 17:04:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PhpOffice\PhpSpreadsheet\Spreadsheet::save() in D:\Projects\Pilpres\controller\SummaryController.php:41
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 41
+[11-Mar-2019 17:19:10 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::fromArray() must be of the type array, object given, called in D:\Projects\Pilpres\controller\SummaryController.php on line 47 and defined in D:\Projects\Pilpres\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Worksheet\Worksheet.php:2488
+Stack trace:
+#0 D:\Projects\Pilpres\controller\SummaryController.php(47): PhpOffice\PhpSpreadsheet\Worksheet\Worksheet->fromArray(Object(Users), ' ', 'a1')
+#1 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#2 D:\Projects\Pilpres\index.php(28): Router->execute()
+#3 {main}
+  thrown in D:\Projects\Pilpres\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Worksheet\Worksheet.php on line 2488
+[11-Mar-2019 17:19:43 UTC] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Exception: Invalid cell coordinate a1 in D:\Projects\Pilpres\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Cell\Coordinate.php:42
+Stack trace:
+#0 D:\Projects\Pilpres\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Worksheet\Worksheet.php(2496): PhpOffice\PhpSpreadsheet\Cell\Coordinate::coordinateFromString('a1')
+#1 D:\Projects\Pilpres\controller\SummaryController.php(47): PhpOffice\PhpSpreadsheet\Worksheet\Worksheet->fromArray(Array, ' ', 'a1')
+#2 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#3 D:\Projects\Pilpres\index.php(28): Router->execute()
+#4 {main}
+  thrown in D:\Projects\Pilpres\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Cell\Coordinate.php on line 42
+[11-Mar-2019 17:46:50 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in D:\Projects\Pilpres\controller\SummaryController.php on line 64
+[11-Mar-2019 17:46:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getId() on array in D:\Projects\Pilpres\controller\SummaryController.php:62
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 62
+[11-Mar-2019 17:49:16 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type AnswersheetModel as array in D:\Projects\Pilpres\controller\SummaryController.php:64
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 64
+[11-Mar-2019 17:50:19 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type AnswersheetModel as array in D:\Projects\Pilpres\controller\SummaryController.php:64
+Stack trace:
+#0 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#1 D:\Projects\Pilpres\index.php(28): Router->execute()
+#2 {main}
+  thrown in D:\Projects\Pilpres\controller\SummaryController.php on line 64
+[11-Mar-2019 18:29:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function execute() on null in D:\Projects\Pilpres\model\BaseModel.php:33
+Stack trace:
+#0 D:\Projects\Pilpres\controller\SummaryController.php(114): BaseModel->__call('loadUsersQuesti...', Array)
+#1 D:\Projects\Pilpres\core\Router.php(62): SummaryController->export()
+#2 D:\Projects\Pilpres\index.php(28): Router->execute()
+#3 {main}
+  thrown in D:\Projects\Pilpres\model\BaseModel.php on line 33
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Use of undefined constant user - assumed 'user' (this will throw an Error in a future version of PHP) in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Illegal string offset 'id' in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Use of undefined constant user - assumed 'user' (this will throw an Error in a future version of PHP) in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Illegal string offset 'id' in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Use of undefined constant user - assumed 'user' (this will throw an Error in a future version of PHP) in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:32:34 UTC] PHP Warning:  Illegal string offset 'id' in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:33:33 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:33:33 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in D:\Projects\Pilpres\controller\SummaryController.php on line 117
+[11-Mar-2019 18:33:33 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in D:\Projects\Pilpres\controller\SummaryController.php on line 117
