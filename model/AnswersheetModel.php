@@ -262,9 +262,8 @@ class AnswersheetModel extends BaseModel
     {
         if ($this->id_news == NULL) {
             $stmt = $this->conn->prepare("SELECT id_news, COUNT(*) AS total FROM $this->tableName WHERE first_pick = :first_pick "
-                . "AND `position` = :pos AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
+                . " AND id_news IS NOT NULL GROUP BY id_news ORDER BY total ASC");
             $stmt->bindParam("first_pick", $this->first_pick);
-            $stmt->bindParam("pos", $this->position);
             $idnews = 0;
             $check = [0, 0, 0];
             $stmt->execute();
