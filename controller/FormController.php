@@ -107,11 +107,9 @@ class FormController extends BaseController
         $fill->loadFromUserId();
         if (!$this->direct) {
             $score = $this->request->post("tendency");
-            if ($score == 10) $pick = "Netral";
-            else if ($score > 10) $pick = "Prabowo";
-            else $pick = "Jokowi";
+            $firstPickName = $this->request->post("firstPicked");
             $fill->setTendency1($score);
-            $fill->setFirstPick($pick);
+            $fill->setFirstPick($firstPicked);
             $fill->generateIdNews();
             $fill->save();
         }

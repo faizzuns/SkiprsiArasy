@@ -65,6 +65,7 @@ if ($position == 0) {
                 </div>
             </div>
             <input type="hidden" name="state" value=<?php echo $state;?>>
+            <input type="hidden" id="firstPicked" name="firstPicked" value="Netral">
             <div class="flex center-horizontal margin-top-medium">
                 <input type="submit" value="Next" class="btn btn-outline-dark quarter margin-top-medium">
             </div>
@@ -92,6 +93,7 @@ if ($position == 0) {
         }
 
         name.innerHTML = comment;
+        document.getElementById("firstPicked").value = comment;
         number.innerHTML = print;
 
     }

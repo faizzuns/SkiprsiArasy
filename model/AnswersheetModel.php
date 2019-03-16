@@ -272,35 +272,34 @@ class AnswersheetModel extends BaseModel
                 $idnews = $row['id_news'];
                 $check[$idnews] = 1;
             }
-            if ($check[0] == 0) $this->id_news = 0;
-            else if ($check[1] == 0) $this->id_news = 1;
-            else if ($check[2] == 0) $this->id_news = 2;
-            else $this->id_news = $idnews;
-
-//            if ($this->id_news == 0) {
-//                $this->correction = -1;
-//                $this->distract = -1;
-//                $this->termo_2 = -1;
-//                $this->tendecy_2 = -1;
-//                $this->dbrief_1 = -1;
-//                $this->dbrief_2 = -1;
-//            }
+            if ($check[0] < $check[1]) {
+                if ($check[0] < $check[2]) {
+                    $this->id_news = 0;
+                } else {
+                    $this->id_news = 2;
+                }
+            } else {
+                if ($check[1] < $check[2]) {
+                    $this->id_news = 1;
+                } else {
+                    $this->id_news = 2;
+                }
+            }
         }
     }
 
     public function generatePosition()
     {
         $stmt = $this->conn->prepare("SELECT `position`, COUNT(*) AS total FROM $this->tableName GROUP BY `position` ORDER BY total ASC");
-        $stmt->bindParam("first_pick", $this->first_pick);
         $pos = 0;
         $check = [0,0];
         $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $pos = $row['position'];
-            $check[$pos] = 1;
+            $check[$pos] = $row['total'];
         }
 
-        if ($check[0] == 0) $this->position = 0;
+        if ($check[0] < $check[1]) $this->position = 0;
         else $this->position = 1;
     }
 
