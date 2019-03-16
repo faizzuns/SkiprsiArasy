@@ -109,7 +109,7 @@ class FormController extends BaseController
             $score = $this->request->post("tendency");
             $firstPickName = $this->request->post("firstPicked");
             $fill->setTendency1($score);
-            $fill->setFirstPick($firstPicked);
+            $fill->setFirstPick($firstPickName);
             $fill->generateIdNews();
             $fill->save();
         }
