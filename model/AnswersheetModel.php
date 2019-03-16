@@ -269,7 +269,7 @@ class AnswersheetModel extends BaseModel
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $idnews = $row['id_news'];
-                $check[$idnews] = 1;
+                $check[$idnews] = $row['total'];
             }
             if ($check[0] < $check[1]) {
                 if ($check[0] < $check[2]) {
